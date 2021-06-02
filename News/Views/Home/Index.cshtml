@@ -1,0 +1,72 @@
+﻿@model List<News.Models.Categroy>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- ======= Hero Section =======-->
+<section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+            Slide 1
+            <div class="carousel-item active" style="background-image: url(../assets/img/slide/slide-1.jpg)">
+                <div class="container">
+                    <h2>Welcome to <span>Daylight News</span>..... Follow us to know news around world day by day </h2>
+                    <p> This websie provides General News, Business, Finance, Economics, Computers, Science, Technology, Art, Health, Medicine, Lifestyle, Multicultural Press,Sport & Leisure around the world</p>
+                    <a href="#about" class="btn-get-started scrollto">Read More</a>
+                </div>
+            </div>
+
+            Slide 2
+            <div class="carousel-item" style="background-image: url(../assets/img/slide/slide-2.jpg)">
+                <div class="container">
+                    <h2>Palestine’s UN envoy calls for international action to end Israeli occupation</h2>
+                    <p> The next phase of international diplomacy to address the Israeli-Palestinian conflict must focus on ending Israel’s occupation and establishing an independent Palestinian state, according to Riyad Mansour, the Palestinian ambassador to the UN</p>
+                    <a href="#about" class="btn-get-started scrollto">Read More</a>
+                </div>
+            </div>
+
+            Slide 3
+            <div class="carousel-item" style="background-image: url(../assets/img/slide/slide-3.jpg)">
+                <div class="container">
+                    <h2>Egypt’s ranking in scientific publishing advances to 30th globally: Scimago</h2>
+                    <p>
+                        The ranking was published in the monthly scientific research index by the Egyptian Observatory for Science, Technology and Innovation at the Academy of Scientific Research and Technology.
+                    </p>
+                    <a href="#about" class="btn-get-started scrollto">Read More</a>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+    </div>
+</section>
+<!-- =======End Hero =======-->
+
+<section id="featured-services" class="featured-services">
+
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-5 ">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon"><i class="fas fa-newspaper"></i></div>
+                        <h4 class="title"><a asp-action="ViewNews" asp-controller="Home" asp-route="@item.Id"> @item.Name</a></h4>
+                        <p class="description">@item.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
