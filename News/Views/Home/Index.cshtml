@@ -62,7 +62,7 @@
                 <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-5 ">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon"><i class="fas fa-newspaper"></i></div>
-                        <h4 class="title"><a asp-action="ViewNews" asp-controller="Home" asp-route="@item.Id"> @item.Name</a></h4>
+                        <h4 class="title"><a href="Home/ViewNews/@item.Id" > @item.Name</a></h4>
                         <p class="description">@item.Description</p>
                     </div>
                 </div>
