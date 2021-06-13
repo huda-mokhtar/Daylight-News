@@ -37,11 +37,11 @@ namespace News.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SaveContactUs(ContactUs contact)
+        public IActionResult ContactUs(ContactUs contact)
         {
             db.Contacts.Add(contact);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ContactUs");
         }
 
         public IActionResult Privacy()

@@ -48,13 +48,13 @@
             </div>
 
             <div class="col-lg-6">
-                <form asp-action="SaveContactUs" method="post" class="Formemail">
+                <form asp-action="ContactUs" method="post" class="Formemail">
                     <div class="row">
                         <div class="col form-group mt-3">
-                            <input type="text" asp-for="Name" class="form-control" placeholder="Your Name" required>
+                            <input type="text"   id="name" asp-for="Name" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="col form-group mt-3">
-                            <input type="email" asp-for="Email" class="form-control" placeholder="Your Email" required>
+                            <input id="email" type="email" asp-for="Email" class="form-control" placeholder="Your Email" required>
                         </div>
                     </div>
                     <div class="form-group mt-3">
@@ -67,7 +67,7 @@
                         <div class="loading">Loading</div>
                         <div id="mes" class="sent-message">Your message has been sent. Thank you!</div>
                     </div>
-                    <div class="text-center"><button onclick="Message();" type="submit">Send Message</button></div>
+                    <div class="text-center"><button id="btnsubmit" type="reset" >Send Message</button></div>
                 </form>
             </div>
 
@@ -77,8 +77,29 @@
 </section><!-- End Contact Section -->
 @section scripts {
     <script>
-        function Message() {
-            $('#mes').show();
-        }
+        $(document).ready(function () {
+            $("#btnsubmit").click(function () {
+                    $.ajax({
+                        url: "/Home/ContactUs",
+                        type: "POST",
+                        success: (res => {
+                            $(".sent-message").css({ display: "block" });
+                            console.log(res);
+                        }),
+                        error: (err => {
+                            console.log(err);
+                        })
+                    })
+                    
+            });
+            $("#name").focus(function () {
+                $(".sent-message").css({ display: "none" });
+            })
+            $("#email").focus(function () {
+                $(".sent-message").css({ display: "none" });
+            })
+
+            }); 
     </script>
+
 }
